@@ -2,7 +2,7 @@
 
 ## What is this?
 
-`safe-eval` lets you execute JavaScript code without having to use the much discouraged and feared upon `eval()`. `safe-eval` has access to all the standard JavaScript objects of the underlying engine. It is implemented using [node's vm module](https://nodejs.org/api/vm.html).
+`safe-eval` lets you execute JavaScript code without having to use the much discouraged and feared upon `eval()`. `safe-eval` has access to all the standard JavaScript API of the underlying engine. It is implemented using [node's vm module](https://nodejs.org/api/vm.html).
 
 Currently, it works only with Node.js, and the JavaScript code must be an expression (something which evaluates to a value).
 
@@ -16,7 +16,15 @@ npm install safe-eval --save
 
 ```js
 var safeEval = require('safe-eval')
+```
 
+**`safeEval(code, [context])`**
+
+`code` is the JavaScript code you want to execute.
+
+`context` is an object of methods and properties you want to access from `code`. They are available as global objects in `code`. Be careful about the obejcts you are passing to the context API, because they can completely defeat the purpose of `safe-eval`.
+
+```
 // string concatenation
 var code = '"app" + "le"'
 var evaluated = safeEval(code) // "apple"
@@ -37,6 +45,13 @@ var evaluated = safeEval(code) // 25
 var code = 'process'
 safeEval(code) // THROWS!
 
+// your own context API - access to Node's process object and a custom function
+var code = '{pid: process.pid, apple: a()}'
+var context = {
+  process: process,
+  a: function () { return 'APPLE' }
+}
+var evaluated = safeEval(code, context) // { pid: 16987, apple: 'APPLE' }
 ```
 
 ## License (MIT)

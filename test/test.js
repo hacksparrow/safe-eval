@@ -44,4 +44,15 @@ describe('safe-eval', function () {
     })
   })
 
+  it('should support context API', function () {
+    var code = '{pid: process.pid, apple: a()}'
+    var context = {
+      process: process,
+      a: function () { return 'APPLE' }
+    }
+    var evaluated = safeEval(code, context)
+    assert(evaluated.pid > 0)
+    assert(evaluated.apple === 'APPLE')
+  })
+
 })
