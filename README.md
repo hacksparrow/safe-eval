@@ -18,33 +18,45 @@ npm install safe-eval --save
 var safeEval = require('safe-eval')
 ```
 
-**`safeEval(code, [context])`**
+**safeEval(code, [context])**
 
 `code` is the JavaScript code you want to execute.
 
 `context` is an object of methods and properties you want to access from `code`. They are available as global objects in `code`. Be careful about the obejcts you are passing to the context API, because they can completely defeat the purpose of `safe-eval`.
 
+### Examples
+
 ```
 // string concatenation
 var code = '"app" + "le"'
 var evaluated = safeEval(code) // "apple"
+```
 
+```
 // math
 var code = 'Math.floor(22/7)'
 var evaluated = safeEval(code) // 3.142857142857143
+```
 
+```
 // JSON
 var code = '{name: "Borat", hobbies: ["disco dance", "sunbathing"]}'
 var evaluated = safeEval(code) // {name: "Borat", hobbies: ["disco dance", "sunbathing"]}
+```
 
+```
 // function expression
 var code = '(function square(b) { return b * b; })(5)'
 var evaluated = safeEval(code) // 25
+```
 
+```
 // no access to Node.js objects
 var code = 'process'
 safeEval(code) // THROWS!
+```
 
+```
 // your own context API - access to Node's process object and a custom function
 var code = '{pid: process.pid, apple: a()}'
 var context = {
