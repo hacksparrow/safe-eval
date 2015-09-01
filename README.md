@@ -22,7 +22,7 @@ var safeEval = require('safe-eval')
 
 `code` is the JavaScript code you want to execute.
 
-`context` is an object of methods and properties you want to access from `code`. They are available as global objects in `code`. Be careful about the obejcts you are passing to the context API, because they can completely defeat the purpose of `safe-eval`.
+`context` is an object of methods and properties, these methods and properties are interpreted as global objects in `code`. Be careful about the objects you are passing to the context API, because they can completely defeat the purpose of `safe-eval`.
 
 ### Examples
 
