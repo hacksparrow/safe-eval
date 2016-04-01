@@ -1,6 +1,6 @@
 var vm = require('vm')
 
-module.exports = function safeEval (code, context) {
+module.exports = function safeEval (code, context, opts) {
   var sandbox = {}
   var resultKey = 'SAFE_EVAL_' + Math.floor(Math.random() * 1000000)
   sandbox[resultKey] = {}
@@ -10,6 +10,6 @@ module.exports = function safeEval (code, context) {
       sandbox[key] = context[key]
     })
   }
-  vm.runInNewContext(code, sandbox)
+  vm.runInNewContext(code, sandbox, opts)
   return sandbox[resultKey]
 }
