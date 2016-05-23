@@ -59,7 +59,7 @@ describe('safe-eval', function () {
     try {
       safeEval(code, {}, { filename: 'bar.js', timeout: 1 })
     } catch (e) {
-      assert(e.stack.indexOf('bar.js') > 0)
+      assert(e.stack.indexOf('bar.js') > -1)
     }
   })
 })

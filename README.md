@@ -1,4 +1,4 @@
-# safe-eval [![npm version](https://badge.fury.io/js/safe-eval.svg)](https://badge.fury.io/js/safe-eval)
+# safe-eval [![npm version](https://badge.fury.io/js/safe-eval.svg)](https://badge.fury.io/js/safe-eval) [![Build Status](https://travis-ci.org/hacksparrow/safe-eval.svg?branch=master)](https://travis-ci.org/hacksparrow/safe-eval)
 
 ## What is this?
 
