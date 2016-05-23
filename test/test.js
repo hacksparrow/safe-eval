@@ -4,7 +4,6 @@ var assert = require('assert')
 var safeEval = require(__dirname + '/..')
 
 describe('safe-eval', function () {
-
   it('should perform string concatenation', function () {
     var code = '"app" + "le"'
     var evaluated = safeEval(code)
@@ -55,4 +54,12 @@ describe('safe-eval', function () {
     assert(evaluated.apple === 'APPLE')
   })
 
+  it('should include vm options', function () {
+    var code = 'foo'
+    try {
+      safeEval(code, {}, { filename: 'bar.js', timeout: 1 })
+    } catch (e) {
+      assert(e.stack.indexOf('bar.js') > 0)
+    }
+  })
 })
