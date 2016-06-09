@@ -18,7 +18,7 @@ npm install safe-eval --save
 var safeEval = require('safe-eval')
 ```
 
-**safeEval(code, [context], options)**
+**safeEval(code, [context], [options])**
 
 `code` is the JavaScript code you want to execute.
 
