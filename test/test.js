@@ -42,7 +42,14 @@ describe('safe-eval', function () {
       safeEval(code)
     })
   })
-
+  
+  it('should not have access to Node.js objects (CWE-265)', function () {
+    var code = 'this.constructor.constructor(\'return process\')()'
+    assert.throws(function () {
+      safeEval(code)
+    })
+  })
+  
   it('should support context API', function () {
     var code = '{pid: process.pid, apple: a()}'
     var context = {
