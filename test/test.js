@@ -64,7 +64,7 @@ describe('safe-eval', function () {
   it('should include vm options', function () {
     var code = 'foo'
     try {
-      safeEval(code, {}, { filename: 'bar.js', timeout: 1 })
+      safeEval(code, {}, { filename: 'bar.js', timeout: 100 })
     } catch (e) {
       assert(e.stack.indexOf('bar.js') > -1)
     }
