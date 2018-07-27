@@ -8,7 +8,7 @@ Version `0.4.0` fixes this vulnerability. It is highly recommended to upgrade to
 
 ## What is this?
 
-`safe-eval` lets you execute JavaScript code without having to use the much discouraged and feared upon `eval()`. `safe-eval` has access to all the standard APIs of the [V8 JavaScript Engine](https://code.google.com/p/v8/). By default, it does not have access to the Node.js API, but can be given access using a conext object. It is implemented using [node's vm module](https://nodejs.org/api/vm.html).
+`safe-eval` lets you execute JavaScript code without having to use the much discouraged and feared upon `eval()`. `safe-eval` has access to all the standard APIs of the [V8 JavaScript Engine](https://code.google.com/p/v8/). By default, it does not have access to the Node.js API, but can be given access using a context object. It is implemented using [node's vm module](https://nodejs.org/api/vm.html).
 
 Currently, it works only with Node.js, and the JavaScript code must be an expression (something which evaluates to a value).
 
