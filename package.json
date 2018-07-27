@@ -1,6 +1,6 @@
 {
   "name": "safe-eval",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Safer version of eval()",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/hacksparrow/safe-eval",
   "devDependencies": {
-    "mocha": "^2.2.5",
-    "standard": "^5.1.1"
+    "mocha": "^5.2.0",
+    "standard": "^11.0.1"
   }
 }

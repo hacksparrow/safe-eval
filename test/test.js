@@ -1,7 +1,8 @@
 /* global describe, it */
 
 var assert = require('assert')
-var safeEval = require(__dirname + '/..')
+var path = require('path')
+var safeEval = require(path.join(__dirname, '..'))
 
 describe('safe-eval', function () {
   it('should perform string concatenation', function () {
