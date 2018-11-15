@@ -18,6 +18,7 @@ module.exports = function safeEval (code, context, opts) {
   code = clearContext + resultKey + '=' + code
   if (context) {
     Object.keys(context).forEach(function (key) {
+      if (context[key] === Function) return
       sandbox[key] = context[key]
     })
   }
