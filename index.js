@@ -10,8 +10,11 @@ module.exports = function safeEval (code, context, opts) {
       const keys = Object.getOwnPropertyNames(this).concat(['constructor']);
       keys.forEach((key) => {
         const item = this[key];
-        if (!item || typeof item.constructor !== 'function') return;
-        this[key].constructor = undefined;
+        if (!item) return;
+        if (typeof Object.getPrototypeOf(item).constructor === 'function')
+          Object.getPrototypeOf(item).constructor = undefined;
+        if (typeof item.constructor === 'function')
+          this[key].constructor = undefined;
       });
     })();
   `
