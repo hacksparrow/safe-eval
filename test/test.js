@@ -44,7 +44,7 @@ describe('safe-eval', function () {
     })
   })
 
-  it('should not have access to Node.js objects (@cpcallen report)', function () {
+  it('should not have access to Node.js objects using context (CWE-265)', function () {
     var code = 'test(\'return process\')()'
     assert.throws(function () {
       safeEval(code, {
@@ -54,7 +54,14 @@ describe('safe-eval', function () {
     })
   })
 
-  it('should not have access to Node.js objects (CWE-265)', function () {
+  it('should not have access to Node.js objects using Object.getPrototypeOf (CWE-265)', function () {
+    var code = `Object.getPrototypeOf(Object).constructor('return process')();`
+    assert.throws(function () {
+      safeEval(code)
+    })
+  })
+
+  it('should not have access to Node.js objects using this.constructor (CWE-265)', function () {
     var code = 'this.constructor.constructor(\'return process\')()'
     assert.throws(function () {
       safeEval(code)
