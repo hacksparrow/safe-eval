@@ -61,6 +61,15 @@ describe('safe-eval', function () {
     })
   })
 
+  it('should not have access to Node.js objects using Object.getPrototypeOf with context (CWE-265)', function () {
+    var code = `Object.getPrototypeOf(obj).constructor.constructor("return process")();`
+    assert.throws(function () {
+      safeEval(code, {
+        obj: Object
+      })
+    })
+  })
+  
   it('should not have access to Node.js objects using this.constructor (CWE-265)', function () {
     var code = 'this.constructor.constructor(\'return process\')()'
     assert.throws(function () {
