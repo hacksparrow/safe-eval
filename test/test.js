@@ -53,7 +53,7 @@ describe('safe-eval', function () {
       })
     })
   })
-  
+
   it('should not have access to Node.js objects (CWE-265)', function () {
     var code = 'this.constructor.constructor(\'return process\')()'
     assert.throws(function () {
