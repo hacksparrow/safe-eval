@@ -44,6 +44,16 @@ describe('safe-eval', function () {
     })
   })
 
+  it('should not have access to Node.js objects (@cpcallen report)', function () {
+    var code = 'test(\'return process\')()'
+    assert.throws(function () {
+      safeEval(code, {
+        // eslint-disable-next-line no-new-func
+        test: new Function().constructor
+      })
+    })
+  })
+  
   it('should not have access to Node.js objects (CWE-265)', function () {
     var code = 'this.constructor.constructor(\'return process\')()'
     assert.throws(function () {
