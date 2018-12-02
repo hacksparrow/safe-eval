@@ -1,6 +1,6 @@
 {
   "name": "safe-eval",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Safer version of eval()",
   "main": "index.js",
   "scripts": {
