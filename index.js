@@ -1,6 +1,11 @@
 var vm = require('vm')
 
+var unSafe = ['global', 'exec', 'require'];
+
 module.exports = function safeEval (code, context, opts) {
+  var isUnsafe = unSafe.some(value => code.includes(value));
+  if (isUnsafe) return throw new Error('Error: unsafe code!');
+  
   var sandbox = {}
   var resultKey = 'SAFE_EVAL_' + Math.floor(Math.random() * 1000000)
   sandbox[resultKey] = {}
