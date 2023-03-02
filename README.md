@@ -45,7 +45,7 @@ var evaluated = safeEval(code) // "apple"
 ```js
 // math
 var code = 'Math.floor(22/7)'
-var evaluated = safeEval(code) // 3.142857142857143
+var evaluated = safeEval(code) // 3
 ```
 
 ```js
